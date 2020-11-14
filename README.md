@@ -1,21 +1,59 @@
 # react-native-apple-pay
 
-Apple Pay implementation for React Native
+Apple Pay implementation for React Native (Only IOS)
 
 ## Installation
 
 ```sh
-npm install react-native-apple-pay
+yarn add react-native-apple-pay
+
+cd ios && pod install
 ```
 
 ## Usage
 
-```js
-import ApplePay from "react-native-apple-pay";
+###Types
 
-// ...
+```ts
 
-const result = await ApplePay.multiply(3, 7);
+type Network = 'Visa' | 'MasterCard' | 'AmEx';
+
+export type SupportedNetworks = Network[];
+
+export interface MethodData {
+    countyCode: string;
+    currencyCode: string;
+    supportedNetworks: SupportedNetworks;
+    merchantIdentifier: string;
+}
+
+export interface Detail {
+    label: string;
+    amount: number;
+}
+
+export interface DetailsData {
+    total: Detail;
+}
+
+export interface PaymentResponse {
+    transactionIdentifier: string;
+    paymentData: any;
+}
+
+```
+
+### Code
+```ts
+
+import ApplePay, { MethodData, DetailsData } from "react-native-apple-pay";
+
+const payment = ApplePay(method as MethodData, details as DetailsData);
+
+const canMakePayment: boolean = await payment.canMakePayments()
+
+const paymentResponse: PaymentResponse = await payment.initApplePay()
+
 ```
 
 ## Contributing
