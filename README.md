@@ -2,9 +2,11 @@
 
 Apple Pay implementation for React Native (Only IOS)
 
-<img src="images/img1.png" width="250" height="470" alt="img1" />
-<img src="images/img2.png" width="250" height="470" alt="img2" />
-<img src="images/img3.png" width="250" height="470" alt="img3" />
+<div style="display: flex;">
+    <img style="margin-right: 20px" src="images/img1.png" width="250" height="500" alt="img1" />
+    <img style="margin-right: 20px" src="images/img2.png" width="250" height="500" alt="img2" />
+    <img style="margin-right: 20px" src="images/img3.png" width="250" height="500" alt="img3" />
+</div>
 
 ## Installation
 
