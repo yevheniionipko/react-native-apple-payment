@@ -1,5 +1,5 @@
 {
-  "name": "react-native-applepay",
+  "name": "react-native-apple-payment",
   "version": "1.0.0",
   "description": "Apple Pay implementation for React Native",
   "main": "src/index",
@@ -32,13 +32,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/yevheniionipko/react-native-applepay",
+  "repository": "https://github.com/yevheniionipko/react-native-apple-payment",
   "author": "Yevhenii Onipko <y.onipko@kyivstar.net> (https://github.com/yevheniionipko)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yevheniionipko/react-native-applepay/issues"
+    "url": "https://github.com/yevheniionipko/react-native-apple-payment/issues"
   },
-  "homepage": "https://github.com/yevheniionipko/react-native-applepay#readme",
+  "homepage": "https://github.com/yevheniionipko/react-native-apple-payment#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",
@@ -128,5 +128,8 @@
     "source": "src",
     "output": "lib",
     "targets": ["commonjs", "module", "typescript"]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
