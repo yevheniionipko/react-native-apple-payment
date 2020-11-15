@@ -2,6 +2,10 @@
 
 Apple Pay implementation for React Native (Only IOS)
 
+<img src="images/img1.png" width="250" height="470" alt="img1" />
+<img src="images/img2.png" width="250" height="470" alt="img2" />
+<img src="images/img3.png" width="250" height="470" alt="img3" />
+
 ## Installation
 
 ```sh
@@ -12,7 +16,7 @@ cd ios && pod install
 
 ## Usage
 
-###Types
+### Types
 
 ```ts
 
@@ -21,7 +25,7 @@ type Network = 'Visa' | 'MasterCard' | 'AmEx';
 export type SupportedNetworks = Network[];
 
 export interface MethodData {
-    countyCode: string;
+    countryCode: string;
     currencyCode: string;
     supportedNetworks: SupportedNetworks;
     merchantIdentifier: string;

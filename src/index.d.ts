@@ -4,7 +4,7 @@ declare module 'react-native-apple-pay' {
   export type SupportedNetworks = Network[];
 
   export interface MethodData {
-    countyCode: string;
+    countryCode: string;
     currencyCode: string;
     supportedNetworks: SupportedNetworks;
     merchantIdentifier: string;

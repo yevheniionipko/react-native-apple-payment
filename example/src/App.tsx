@@ -4,7 +4,7 @@ import ApplePay, { DetailsData, MethodData } from 'react-native-apple-pay';
 
 export default function App() {
   const Method: MethodData = {
-    countyCode: 'US',
+    countryCode: 'US',
     currencyCode: 'USD',
     merchantIdentifier: 'merchant.com.onipko',
     supportedNetworks: ['Visa', 'MasterCard', 'AmEx'],
@@ -13,7 +13,7 @@ export default function App() {
   const Options: DetailsData = {
     total: {
       label: 'Shoe-shop',
-      amount: 200,
+      amount: 200.35,
     },
   };
 
