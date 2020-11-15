@@ -3,9 +3,9 @@
 Apple Pay implementation for React Native (Only IOS)
 
 <div style="display: flex;">
-    <img style="margin-right: 20px" src="images/img1.png" width="250" height="500" alt="img1" />
-    <img style="margin-right: 20px" src="images/img2.png" width="250" height="500" alt="img2" />
-    <img style="margin-right: 20px" src="images/img3.png" width="250" height="500" alt="img3" />
+    <img style="margin-right: 20px" src="images/img1.png" width="250" height="530" alt="img1" />
+    <img style="margin-right: 20px" src="images/img2.png" width="250" height="530" alt="img2" />
+    <img style="margin-right: 20px" src="images/img3.png" width="250" height="530" alt="img3" />
 </div>
 
 ## Installation
@@ -54,7 +54,7 @@ export interface PaymentResponse {
 
 import ApplePay, { MethodData, DetailsData } from "react-native-apple-pay";
 
-const payment = ApplePay(method as MethodData, details as DetailsData);
+const payment = new ApplePay(method as MethodData, details as DetailsData);
 
 const canMakePayment: boolean = await payment.canMakePayments()
 
