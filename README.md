@@ -1,4 +1,4 @@
-# react-native-apple-pay
+# react-native-applepay
 
 Apple Pay implementation for React Native (Only IOS)
 
@@ -11,7 +11,7 @@ Apple Pay implementation for React Native (Only IOS)
 ## Installation
 
 ```sh
-yarn add react-native-apple-pay
+yarn add react-native-applepay
 
 cd ios && pod install
 ```
