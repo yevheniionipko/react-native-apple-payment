@@ -1,4 +1,4 @@
-declare module 'react-native-apple-pay' {
+declare module 'react-native-apple-payment' {
   type Network = 'Visa' | 'MasterCard' | 'AmEx';
 
   export type SupportedNetworks = Network[];
@@ -19,14 +19,11 @@ declare module 'react-native-apple-pay' {
     total: Detail;
   }
 
-  export interface PaymentResponse {
-    transactionIdentifier: string;
-    paymentData: any;
-  }
+  export type TransactionIdentifier = string;
 
   export default class ApplePay {
     constructor(method: MethodData, details: DetailsData);
-    initApplePay(): Promise<PaymentResponse>;
+    initApplePay(): Promise<TransactionIdentifier>;
     canMakePayments(): Promise<boolean>;
   }
 }

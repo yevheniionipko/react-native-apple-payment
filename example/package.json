@@ -1,10 +1,9 @@
 {
-  "name": "react-native-apple-pay-example",
-  "description": "Example app for react-native-apple-pay",
+  "name": "react-native-apple-payment-example",
+  "description": "Example app for react-native-apple-payment",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start"
   },

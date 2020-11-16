@@ -42,10 +42,7 @@ export interface DetailsData {
     total: Detail;
 }
 
-export interface PaymentResponse {
-    transactionIdentifier: string;
-    paymentData: any;
-}
+export type TransactionIdentifier = string;
 
 ```
 
@@ -58,7 +55,7 @@ const payment = new ApplePay(method as MethodData, details as DetailsData);
 
 const canMakePayment: boolean = await payment.canMakePayments()
 
-const paymentResponse: PaymentResponse = await payment.initApplePay()
+const paymentResponse: TransactionIdentifier = await payment.initApplePay()
 
 ```
 

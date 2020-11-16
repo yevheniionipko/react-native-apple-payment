@@ -1,6 +1,6 @@
 {
   "name": "react-native-apple-payment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Apple Pay implementation for React Native",
   "main": "src/index",
   "module": "src/index",
