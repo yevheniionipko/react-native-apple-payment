@@ -49,7 +49,7 @@ export type TransactionIdentifier = string;
 ### Code
 ```ts
 
-import ApplePay, { MethodData, DetailsData } from "react-native-apple-pay";
+import ApplePay, { MethodData, DetailsData } from "react-native-apple-payment";
 
 const payment = new ApplePay(method as MethodData, details as DetailsData);
 
