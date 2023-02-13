@@ -63,6 +63,7 @@ extension ApplePay: PKPaymentAuthorizationViewControllerDelegate {
         if token != nil {
             self.resolve!(token)
             completion(.success)
+            self.resolve = nil
         } else {
             self.resolve!("COULD_NOT_FIND_TOKEN")
             completion(.failure)
