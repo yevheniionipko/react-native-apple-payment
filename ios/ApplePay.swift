@@ -39,7 +39,7 @@ class ApplePay: UIViewController {
             }
         }
     }
-    
+
     @objc(canMakePayments:withRejecter:)
     func canMakePayments(resolve: RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
         if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks!) {
@@ -67,6 +67,7 @@ extension ApplePay: PKPaymentAuthorizationViewControllerDelegate {
         } else {
             self.resolve!("COULD_NOT_FIND_TOKEN")
             completion(.failure)
+            self.resolve = nil
         }
     }
 }
