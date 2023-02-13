@@ -53,6 +53,9 @@ class ApplePay: UIViewController {
 extension ApplePay: PKPaymentAuthorizationViewControllerDelegate {
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         controller.dismiss(animated: true, completion: nil)
+        if (self.resolve != nil) {
+          self.resolve!("PAYMENT_CANCELLED")
+        }
     }
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
