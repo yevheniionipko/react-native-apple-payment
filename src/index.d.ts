@@ -1,5 +1,5 @@
 declare module 'react-native-apple-payment' {
-  type Network = 'Visa' | 'MasterCard' | 'AmEx';
+  type Network = 'Visa' | 'MasterCard' | 'AmEx'| 'Mada';
 
   export type SupportedNetworks = Network[];
 
