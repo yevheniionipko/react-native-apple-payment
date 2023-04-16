@@ -3,26 +3,44 @@ declare module 'react-native-apple-payment' {
 
   export type SupportedNetworks = Network[];
 
-  export interface MethodData {
+  export type MethodData = {
     countryCode: string;
     currencyCode: string;
     supportedNetworks: SupportedNetworks;
     merchantIdentifier: string;
   }
 
-  export interface Detail {
+  export type Detail = {
     label: string;
     amount: number;
   }
 
-  export interface DetailsData {
+  export type DetailsData = {
     total: Detail;
+  }
+
+  export  type ShippingType = 'delivery' | 'servicePickup' | 'shipping' | 'storePickup'
+  export type ShippingContact = {
+    name: string,
+    postalAddress: string,
+    phoneNumber: string,
+    emailAddress: string,
+  }
+  export type ShippingMethods = {
+    identifier: string,
+    detail: string,
+  }
+
+  export type ShippingDetails = {
+    type: ShippingType,
+    contact: ShippingContact,
+    methods: ShippingMethods,
   }
 
   export type TransactionIdentifier = string;
 
   export default class ApplePay {
-    constructor(method: MethodData, details: DetailsData);
+    constructor(method: MethodData, details: DetailsData, shippingDetails?: ShippingDetails);
     initApplePay(): Promise<TransactionIdentifier>;
     canMakePayments(): Promise<boolean>;
   }

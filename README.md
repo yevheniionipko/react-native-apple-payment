@@ -59,6 +59,32 @@ const paymentResponse: TransactionIdentifier = await payment.initApplePay()
 
 ```
 
+### Shipping
+
+```ts
+import ApplePay, { MethodData, DetailsData } from "react-native-apple-payment";
+type ShippingType = 'delivery' | 'servicePickup' | 'shipping' | 'storePickup'
+type ShippingContact = {
+  name: 'Yevhenii Onipko',
+  postalAddress: '01111',
+  phoneNumber: '380971234567',
+  emailAddress: 'dummy@gmail.com',
+}
+type ShippingMethods = {
+  identifier: 'test',
+  detail: 'Arrives, Friday 7 Apr.'
+}
+const shippingDetails = {
+  type: ShippingType,
+  contact: ShippingContact,
+  methods: ShippingMethods,
+}
+
+const payment = new ApplePay(method as MethodData, details as DetailsData, shippingDetails);
+
+```
+
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.

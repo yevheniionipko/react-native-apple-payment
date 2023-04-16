@@ -8,8 +8,8 @@ class ApplePay: UIViewController {
     private var paymentNetworks: [PKPaymentNetwork]?
 
 
-    @objc(invokeApplePay:details:)
-    private func invokeApplePay(method: NSDictionary, details: NSDictionary) -> Void {
+    @objc(invokeApplePay:details:shippingDetails:)
+    private func invokeApplePay(method: NSDictionary, details: NSDictionary, shippingDetails: NSDictionary) -> Void {
         self.paymentNetworks = method["supportedNetworks"] as? [PKPaymentNetwork]
         guard PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks!) else {
             print("Can not make payment")
@@ -23,6 +23,31 @@ class ApplePay: UIViewController {
         request.merchantCapabilities = PKMerchantCapability.capability3DS
         request.supportedNetworks = self.paymentNetworks!
         request.paymentSummaryItems = [paymentItem]
+        if let type = shippingDetails["type"] as? String {
+            switch type {
+            case "delivery":
+                request.shippingType = .delivery
+                break
+            case "servicePickup":
+                request.shippingType = .servicePickup
+                break
+            case "shipping":
+                request.shippingType = .shipping
+                break
+            case "storePickup":
+                request.shippingType = .storePickup
+                break
+            default:
+                break
+            }
+            if let contact = shippingDetails["contact"] as? PKContact {
+                request.shippingContact = contact
+            }
+            if let methods = shippingDetails["methods"] as? [PKShippingMethod] {
+                request.shippingMethods = methods
+            }
+            request.requiredShippingContactFields = [.emailAddress, .name, .phoneNumber, .postalAddress]
+        }
     }
 
     @objc(initApplePay:withRejecter:)
@@ -39,7 +64,7 @@ class ApplePay: UIViewController {
             }
         }
     }
-    
+
     @objc(canMakePayments:withRejecter:)
     func canMakePayments(resolve: RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
         if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks!) {
