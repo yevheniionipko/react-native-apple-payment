@@ -3,13 +3,13 @@ import { NativeModules, Platform } from 'react-native';
 const { ApplePay: RNApplePay } = NativeModules;
 
 if (!RNApplePay && Platform.OS === 'ios') {
-  throw new Error('RNApplePay is not defined');
+  console.info('RNApplePay is not defined');
 }
 
 export default class ApplePay {
-  constructor(method, details) {
+  constructor(method, details, shippingDetails) {
     if (Platform.OS === 'ios') {
-      RNApplePay.invokeApplePay(method, details);
+      RNApplePay.invokeApplePay(method, details, shippingDetails);
       this.initApplePay = this._RNinitApplePay;
       this.canMakePayments = this._RNcanMakePayments;
     } else {
