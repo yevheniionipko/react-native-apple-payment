@@ -31,9 +31,9 @@ declare module 'react-native-apple-payment' {
     detail: string,
   }
 
-  export interface ShippingDetails {
+  export type ShippingDetails = {
     type: ShippingType,
-    contact?: ShippingContact,
+    contact: ShippingContact,
     methods: ShippingMethods,
   }
 
