@@ -23,22 +23,31 @@ class ApplePay: UIViewController {
         request.merchantCapabilities = PKMerchantCapability.capability3DS
         request.supportedNetworks = self.paymentNetworks!
         request.paymentSummaryItems = [paymentItem]
-        if shippingDetails["type"] as! String == "delivery" {
-            request.shippingType = .delivery
-        } else if shippingDetails["type"] as! String == "servicePickup" {
-            request.shippingType = .servicePickup
-        } else if shippingDetails["type"] as! String == "shipping" {
-            request.shippingType = .shipping
-        } else if shippingDetails["type"] as! String == "storePickup" {
-            request.shippingType = .storePickup
+        if let type = shippingDetails["type"] as? String {
+            switch type {
+            case "delivery":
+                request.shippingType = .delivery
+                break
+            case "servicePickup":
+                request.shippingType = .servicePickup
+                break
+            case "shipping":
+                request.shippingType = .shipping
+                break
+            case "storePickup":
+                request.shippingType = .storePickup
+                break
+            default:
+                break
+            }
+            if let contact = shippingDetails["contact"] as? PKContact {
+                request.shippingContact = contact
+            }
+            if let methods = shippingDetails["methods"] as? [PKShippingMethod] {
+                request.shippingMethods = methods
+            }
+            request.requiredShippingContactFields = [.emailAddress, .name, .phoneNumber, .postalAddress]
         }
-        if let contact = shippingDetails["contact"] as? PKContact {
-            request.shippingContact = contact
-        }
-        if let methods = shippingDetails["methods"] as? [PKShippingMethod] {
-            request.shippingMethods = methods
-        }
-        request.requiredShippingContactFields = [.emailAddress, .name, .phoneNumber, .postalAddress]
     }
 
     @objc(initApplePay:withRejecter:)
