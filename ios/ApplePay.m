@@ -11,4 +11,9 @@ RCT_EXTERN_METHOD(initApplePay:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(canMakePayments:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
+
 @end
