@@ -16,13 +16,17 @@ class ApplePay: UIViewController {
             return
         }
         let total = details["total"] as! NSDictionary
-        let paymentItem = PKPaymentSummaryItem.init(label: total["label"] as! String, amount: NSDecimalNumber(value: total["amount"] as! Double))
+        let tax = details["tax"] as! NSDictionary
+        let subtotal = details["subTotal"] as! NSDictionary;
+        let paymentTotal = PKPaymentSummaryItem.init(label: total["label"] as! String, amount: NSDecimalNumber(value: total["amount"] as! Double))
+        let paymentTax = PKPaymentSummaryItem.init(label: tax["label"] as! String, amount: NSDecimalNumber(value: tax["amount"] as! Double))
+        let paymentSubtotal = PKPaymentSummaryItem.init(label: subtotal["label"] as! String, amount: NSDecimalNumber(value: subtotal["amount"] as! Double))
         request.currencyCode = method["currencyCode"] as! String
         request.countryCode = method["countryCode"] as! String
         request.merchantIdentifier = method["merchantIdentifier"] as! String
         request.merchantCapabilities = PKMerchantCapability.capability3DS
         request.supportedNetworks = self.paymentNetworks!
-        request.paymentSummaryItems = [paymentItem]
+        request.paymentSummaryItems = [paymentSubtotal, paymentTax, paymentTotal]
         if let type = shippingDetails["type"] as? String {
             switch type {
             case "delivery":
